@@ -7,6 +7,7 @@ import InputField from "./components/InputField";
 import { Radio, RadioGroup, Stack, useToast } from "@chakra-ui/react";
 import { toErrorMap } from "../utils/toErrorMap";
 import { addUser } from "./api/user";
+import { validateForm } from "../utils/validateForm";
 
 const Add = () => {
   const router = useRouter();
@@ -32,9 +33,11 @@ const Add = () => {
         onSubmit={async (values, { setErrors }) => {
           // error handling
           values["is_admin"] = isAdmin === "true" ? true : false;
-          console.log(values);
-          //   let errors = validateForm(values);
-          //   setErrors(toErrorMap(errors));
+          const errors = validateForm(values);
+          if (JSON.stringify(errors) !== "{}") {
+            setErrors(toErrorMap(errors));
+            return;
+          }
           addUser(values).then((response) => {
             console.log(response);
             if (response.status === 400) {
@@ -58,7 +61,7 @@ const Add = () => {
       >
         {({ isSubmitting }) => (
           <Form>
-            {/* single input field styled from Chakra */}
+            <strong style={{ fontSize: "20px" }}> Contact Information</strong>
             <Box mt={4}>
               <InputField
                 type="text"
@@ -85,7 +88,7 @@ const Add = () => {
             </Box>
             <Box mt={4}>
               <InputField
-                type="text"
+                type="tel"
                 name="phone_number"
                 placeholder="123-123-1234"
                 label="Phone Number"
@@ -102,7 +105,12 @@ const Add = () => {
             <br />
             <Box mt={4}>
               <strong style={{ fontSize: "20px" }}>Role</strong>
-              <RadioGroup name="is_admin" value={isAdmin} onChange={setIsAdmin}>
+              <RadioGroup
+                name="is_admin"
+                value={isAdmin}
+                onChange={setIsAdmin}
+                style={{ marginTop: 15 }}
+              >
                 <Stack>
                   <Radio value={"false"}>Regular - Can't delete members</Radio>
                   <Radio value={"true"}>Admin - Can delete members</Radio>

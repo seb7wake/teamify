@@ -15,6 +15,7 @@ import { Form, Formik } from "formik";
 import InputField from "../components/InputField";
 import { toErrorMap } from "../../utils/toErrorMap";
 import { deleteUser, updateUser, getUser } from "../api/user";
+import { validateForm } from "../../utils/validateForm";
 
 const Edit = ({ id }) => {
   const [user, setUser] = React.useState([]);
@@ -78,6 +79,11 @@ const Edit = ({ id }) => {
         onSubmit={async (values, { setErrors }) => {
           // error handling
           values.is_admin = isAdmin === "true" ? true : false;
+          const errors = validateForm(values);
+          if (JSON.stringify(errors) !== "{}") {
+            setErrors(toErrorMap(errors));
+            return;
+          }
           updateUser(values, id)
             .then((response) => {
               if (response.status === 200) {
@@ -153,6 +159,7 @@ const Edit = ({ id }) => {
                   setIsAdmin(nextValue);
                 }}
                 value={isAdmin}
+                style={{ marginTop: 15 }}
               >
                 <Stack>
                   <Radio value={"false"}>Regular - Can't delete members</Radio>

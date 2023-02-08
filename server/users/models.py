@@ -8,7 +8,7 @@ class User(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     is_admin = models.BooleanField(default=False)
-    phone_number = models.CharField(max_length=50)
+    phone_number = models.CharField(max_length=10)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     email = models.CharField(max_length=50, unique=True)

@@ -1,9 +1,21 @@
 import React, { useEffect } from "react";
-import { Box, Button, Flex, Link } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Link,
+  Card,
+  CardBody,
+  Stack,
+  StackDivider,
+  CardHeader,
+  Heading,
+} from "@chakra-ui/react";
 import Wrapper from "./components/Wrapper";
 import NextLink from "next/link";
 import { AddIcon } from "@chakra-ui/icons";
 import { getUsers } from "./api/user";
+import CardContent from "./components/CardContent";
 
 export default function Home() {
   const [users, setUsers] = React.useState([]);
@@ -43,20 +55,22 @@ export default function Home() {
         </Box>
         <br />
         {users.length > 0 ? (
-          users.map((user) => (
-            <NextLink href={`/edit/${user.id}`} key={user.id}>
-              <Box key={user.id} p={7} shadow="md" borderWidth="1px">
-                <Box>
-                  {user.first_name} {user.last_name}{" "}
-                  {user.is_admin ? "(admin)" : ""}
-                </Box>
-                <Box>{user.phone_number}</Box>
-                <Box>{user.email}</Box>
-              </Box>
-            </NextLink>
-          ))
+          <Stack spacing="3">
+            {users.map((user) => (
+              <NextLink href={`/edit/${user.id}`} key={user.id}>
+                <CardContent
+                  first_name={user.first_name}
+                  last_name={user.last_name}
+                  phone_number={user.phone_number}
+                  email={user.email}
+                  is_admin={user.is_admin}
+                  id={user.id}
+                />
+              </NextLink>
+            ))}
+          </Stack>
         ) : (
-          <Box>No users found</Box>
+          <Box>No users found. Click the "+" to add your first user!</Box>
         )}
       </Wrapper>
     </>
