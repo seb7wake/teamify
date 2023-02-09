@@ -19,18 +19,16 @@ services:
 
   server:
     build: ./server
-    # env_file:
-    #   - ./server/.env
     ports:
       - "8000:8000"
     depends_on:
       - database
     environment:
-      DB_HOST: database
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_NAME: teamifydb
+      POSTGRES_DB: teamifydb
+      POSTGRES_HOST: database
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     volumes:
       - ./server:/server
     command: ash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
