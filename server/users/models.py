@@ -32,7 +32,3 @@ class UserForm(ModelForm):
             'location': 'Format should be "City, Country"',
             'phone_number': 'Format should be "123-456-7890"'
         }
-        # error_messages = {
-        #     'name': {
-        #         'max_length': ,
-        #     },

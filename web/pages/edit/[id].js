@@ -36,18 +36,47 @@ const Edit = ({ id }) => {
     });
   }, []);
 
+  const createToast = (email) => {
+    toast({
+      title: email ? "User updated." : "User deleted.",
+      description: email
+        ? "We've updated the user " + email + " for you."
+        : "We've deleted the user for you.",
+      status: "success",
+      position: "top",
+      duration: 3500,
+      isClosable: true,
+    });
+  };
+
+  const handleSubmit = async (values, { setErrors }) => {
+    // error handling
+    values.is_admin = isAdmin === "true" ? true : false;
+    const errors = validateForm(values);
+    if (JSON.stringify(errors) !== "{}") {
+      setErrors(toErrorMap(errors));
+      return;
+    }
+    updateUser(values, id)
+      .then((response) => {
+        if (response.status === 200) {
+          router.push("/");
+          createToast(values.email);
+        } else {
+          const errorMap = toErrorMap(response.data);
+          setErrors(errorMap);
+        }
+      })
+      .catch((error) => {
+        console.log("error:", error);
+      });
+  };
+
   const handleDelete = async () => {
     deleteUser(id)
       .then((response) => {
         router.push("/");
-        toast({
-          title: "User deleted.",
-          description: "We've deleted the user for you.",
-          status: "success",
-          position: "top",
-          duration: 3500,
-          isClosable: true,
-        });
+        createToast(undefined);
       })
       .catch((error) => {
         console.log("error:", error);
@@ -76,41 +105,11 @@ const Edit = ({ id }) => {
           location: user.location,
           is_admin: user.is_admin,
         }}
-        onSubmit={async (values, { setErrors }) => {
-          // error handling
-          values.is_admin = isAdmin === "true" ? true : false;
-          const errors = validateForm(values);
-          if (JSON.stringify(errors) !== "{}") {
-            setErrors(toErrorMap(errors));
-            return;
-          }
-          updateUser(values, id)
-            .then((response) => {
-              if (response.status === 200) {
-                router.push("/");
-                toast({
-                  title: "User updated.",
-                  position: "top",
-                  description:
-                    "We've updated the user " + values.email + " for you.",
-                  status: "success",
-                  duration: 3500,
-                  isClosable: true,
-                });
-              } else {
-                const errorMap = toErrorMap(response.data);
-                setErrors(errorMap);
-              }
-            })
-            .catch((error) => {
-              console.log("error:", error);
-            });
-        }}
+        onSubmit={handleSubmit}
       >
         {({ isSubmitting }) => (
           <Form>
             <strong style={{ fontSize: "20px" }}> Contact Information</strong>
-            {/* single input field styled from Chakra */}
             <Box mt={4}>
               <InputField
                 type="text"

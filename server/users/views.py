@@ -49,34 +49,3 @@ class UserDetail(APIView):
         user = User.objects.get(pk=pk)
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-    # serializer_class = UserSerializer
-    # queryset = User.objects.all()
-
-    # def index(request):
-    #     users = User.objects.all()
-    #     context = {
-    #         'users': users,
-    #     }
-    #     return render(request, 'index.html', context)
-
-    # def edit(request, user_id):
-    #     try:
-    #         user = User.objects.get(pk=user_id)
-    #         print(user)
-    #     except User.DoesNotExist:
-    #         raise Http404("User does not exist")
-    #     form = UserForm(instance=user)
-    #     print(form)
-    #     context = {
-    #         'user': user,
-    #         "form": form,
-    #     }
-    #     return render(request, 'edit.html', context)
-
-    # def add(request):
-    #     form = UserForm()
-    #     context = {
-    #         "form": form,
-    #     }
-    #     return render(request, 'add.html', context)

@@ -55,7 +55,6 @@ class TestUser(TestCase):
     
     def test_user_exists(self):
         user_id = self.add_test_user()
-        # import pdb; pdb.set_trace()
         response = self.client.get("/api/users/{}/".format(user_id))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data['email'], mock_user['email'])

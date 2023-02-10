@@ -14,6 +14,36 @@ const Add = () => {
   const [isAdmin, setIsAdmin] = React.useState("false");
   const toast = useToast();
 
+  const createToast = (email) => {
+    toast({
+      title: "User created.",
+      description: "We've added the user " + email + " for you.",
+      position: "top",
+      status: "success",
+      duration: 3500,
+      isClosable: true,
+    });
+  };
+
+  const handleSubmit = async (values, { setErrors }) => {
+    // error handling
+    values["is_admin"] = isAdmin === "true" ? true : false;
+    const errors = validateForm(values);
+    if (JSON.stringify(errors) !== "{}") {
+      setErrors(toErrorMap(errors));
+      return;
+    }
+    addUser(values).then((response) => {
+      if (response.status === 400) {
+        const errorMap = toErrorMap(response.data);
+        setErrors(errorMap);
+      } else {
+        router.push("/");
+        createToast(values.email);
+      }
+    });
+  };
+
   return (
     <Wrapper>
       <Box style={{ fontSize: "35px" }}>Add a team member </Box>
@@ -28,36 +58,9 @@ const Add = () => {
           email: "",
           phone_number: "",
           location: "",
-          is_admin: undefined,
+          is_admin: "false",
         }}
-        onSubmit={async (values, { setErrors }) => {
-          // error handling
-          values["is_admin"] = isAdmin === "true" ? true : false;
-          const errors = validateForm(values);
-          if (JSON.stringify(errors) !== "{}") {
-            setErrors(toErrorMap(errors));
-            return;
-          }
-          addUser(values).then((response) => {
-            console.log(response);
-            if (response.status === 400) {
-              console.log(response);
-              const errorMap = toErrorMap(response.data);
-              setErrors(errorMap);
-            } else {
-              router.push("/");
-              toast({
-                title: "User created.",
-                description:
-                  "We've added the user " + values.email + " for you.",
-                position: "top",
-                status: "success",
-                duration: 3500,
-                isClosable: true,
-              });
-            }
-          });
-        }}
+        onSubmit={handleSubmit}
       >
         {({ isSubmitting }) => (
           <Form>
@@ -119,7 +122,6 @@ const Add = () => {
             </Box>
             <br />
             <br />
-            {/* <Flex style={{ float: "right" }}> */}
             <Button
               size={"lg"}
               type="submit"
@@ -129,7 +131,6 @@ const Add = () => {
             >
               Add User
             </Button>
-            {/* </Flex> */}
           </Form>
         )}
       </Formik>

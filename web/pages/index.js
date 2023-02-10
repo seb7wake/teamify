@@ -1,16 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  Box,
-  Button,
-  Flex,
-  Link,
-  Card,
-  CardBody,
-  Stack,
-  StackDivider,
-  CardHeader,
-  Heading,
-} from "@chakra-ui/react";
+import { Box, Flex, Stack } from "@chakra-ui/react";
 import Wrapper from "./components/Wrapper";
 import NextLink from "next/link";
 import { AddIcon } from "@chakra-ui/icons";
