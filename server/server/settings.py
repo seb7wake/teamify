@@ -47,12 +47,6 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig', #This object was created in /users/apps.py
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.StaticHTMLRenderer',
-    )
-}
-
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
