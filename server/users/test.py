@@ -67,7 +67,6 @@ class TestUser(TestCase):
     def test_user_update(self):
         user_id = self.add_test_user()
         mock_user['email'] = 'seb7wake@gmail.com'
-        import pdb; pdb.set_trace()
         response = self.client.put(
             path="/api/users/{}/".format(user_id), 
             data=urlencode(mock_user), 

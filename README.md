@@ -25,3 +25,8 @@ Full-stack Django/React application to manage team members.
 2. Install dependencies: `yarn`
 3. Start server with Next.js: `yarn dev`
 4. Go to http://localhost:3000 :chart_with_upwards_trend:
+
+## Running Django Tests
+
+1. `cd server`
+2. `python manage.py test`

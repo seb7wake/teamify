@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import Wrapper from "../components/Wrapper";
+import Wrapper from "../../components/Wrapper";
 import {
   Box,
   Button,
@@ -12,7 +12,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
-import InputField from "../components/InputField";
+import InputField from "../../components/InputField";
 import { toErrorMap } from "../../utils/toErrorMap";
 import { deleteUser, updateUser, getUser } from "../api/user";
 import { validateForm } from "../../utils/validateForm";

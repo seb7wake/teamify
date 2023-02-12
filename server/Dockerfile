@@ -10,6 +10,9 @@ RUN apk add --no-cache postgresql-libs && \
   apk --purge del .build-deps
 # RUN python manage.py makemigrations
 # RUN python manage.py migrate
+ENV NODE_ENV production
 COPY . ./
-RUN rm .env
+COPY .env.production .env
+# RUN rm .env
 EXPOSE 8000
+CMD ["python", "manage.py", "migrate", "&&", "python", "manage.py", "runserver", "0.0.0.0:8000"]
