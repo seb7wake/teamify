@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Box, Flex, Stack } from "@chakra-ui/react";
-import Wrapper from "./components/Wrapper";
+import Wrapper from "../components/Wrapper";
 import NextLink from "next/link";
 import { AddIcon } from "@chakra-ui/icons";
 import { getUsers } from "./api/user";
-import CardContent from "./components/CardContent";
+import CardContent from "../components/CardContent";
 
 export default function Home() {
   const [users, setUsers] = React.useState([]);
