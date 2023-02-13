@@ -10,7 +10,7 @@ Full-stack Django/React application to manage team members.
 
 ### Backend Setup :floppy_disk:
 
-1. `cd server` from the root project folder to move to the backend
+1. `cd teamify/server` from the root project folder to move to the backend
 2. Set up your virtual environment:
    1. Installation virtualenv: `pip install virtualenv`
    2. Initialize virtual environment: `python -m venv <virtual-env-name>`
@@ -21,7 +21,7 @@ Full-stack Django/React application to manage team members.
 
 ### Frontend Setup :computer:
 
-1. `cd web` from the root project folder to move to the frontend
+1. `cd teamify/web` from the root project folder to move to the frontend
 2. Install dependencies: `yarn`
 3. Start server with Next.js: `yarn dev`
 4. Go to http://localhost:3000 :chart_with_upwards_trend:
@@ -30,7 +30,3 @@ Full-stack Django/React application to manage team members.
 
 1. `cd server`
 2. `python manage.py test`
-
-## Why Django + Next.js?
-
-The Django REST API framework that I'm using is extremely quick to set up with my PostgreSQL database. I already have experience using Django in previous internships, so I figured I would challenge myself and use a framework called Next.js to host the frontend portion of the application. This is different from what I've done in past projects where I simply utilized conventional Django templates with JS/HTML. Using Next.js alongside the ChackraUI library helped me create a beautiful interface and abstract my UI into reusable components for maintainability and readability.
