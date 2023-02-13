@@ -31,6 +31,10 @@ Full-stack Django/React application to manage team members.
 1. `cd teamify/server`
 2. `python manage.py test`
 
+## Error Hnadling
+
+I implemented error handling in all forms. Every form field in the add and delete pages check for valid input, and show error messages under text fields that need to be updated.
+
 ## How much time I spent
 
 Building the app took me about 8 hours in total. I also went a little overboard and containerized my app using docker, and that took me another 2 hours.
