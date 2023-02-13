@@ -37,4 +37,4 @@ I implemented error handling in all forms. Every form field in the add and delet
 
 ## How much time I spent
 
-Building the app took me about 8 hours in total. I also went a little overboard and containerized my app using docker, and that took me another 2 hours.
+Building the app took me about 10 hours in total. I also went a little overboard and containerized my app using docker, and that took me another 2 hours.
