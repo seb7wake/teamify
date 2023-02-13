@@ -28,7 +28,7 @@ Full-stack Django/React application to manage team members.
 
 ## Running Django Tests
 
-1. `cd server`
+1. `cd teamify/server`
 2. `python manage.py test`
 
 ## How much time I spent
