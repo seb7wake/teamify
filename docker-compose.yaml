@@ -20,7 +20,7 @@ services:
   server:
     build: ./server
     ports:
-      - "80:80"
+      - "8000:8000"
     depends_on:
       - database
     environment:
@@ -32,17 +32,19 @@ services:
       DATABASE_URL: postgres://postgres:postgres@database:5432/teamifydb
     volumes:
       - ./server:/server
-    command: ash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:80"
+    command: ash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
 
   web:
     build: ./web
+    environment:
+      NEXT_PUBLIC_SERVER_URL: http://localhost:8000
     ports:
       - "3000:3000"
     depends_on:
       - server
     volumes:
       - ./web:/web
-    command: "yarn dev"
+    command: "yarn && yarn dev"
 
 volumes:
   db:
