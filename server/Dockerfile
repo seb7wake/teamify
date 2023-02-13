@@ -8,11 +8,5 @@ RUN apk add --no-cache postgresql-libs && \
   apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
   python3 -m pip install -r requirements.txt && \
   apk --purge del .build-deps
-# RUN python manage.py makemigrations
-# RUN python manage.py migrate
-ENV NODE_ENV production
 COPY . ./
-COPY .env.production .env
-# RUN rm .env
-EXPOSE 8000
-CMD ["python", "manage.py", "migrate", "&&", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+EXPOSE 80
