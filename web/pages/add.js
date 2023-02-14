@@ -6,7 +6,7 @@ import { Form, Formik } from "formik";
 import InputField from "../components/InputField";
 import { Radio, RadioGroup, Stack, useToast } from "@chakra-ui/react";
 import { toErrorMap } from "../utils/toErrorMap";
-import { addUser } from "./api/user";
+import { addUser } from "../api/user";
 import { validateForm } from "../utils/validateForm";
 import * as Yup from "yup";
 

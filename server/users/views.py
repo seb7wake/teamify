@@ -1,15 +1,11 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from .serializers import UserSerializer
-from django.template import loader
-from django.shortcuts import get_object_or_404,render
-from .models import User, UserForm
-from django.http import HttpResponse
-from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import *
+import os
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -49,3 +45,12 @@ class UserDetail(APIView):
         user = User.objects.get(pk=pk)
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class TextFileView(APIView):
+    def get(self, request, format=None):
+        cur_path = os.path.dirname(__file__)
+        path = os.path.join(cur_path, '.well-known/pki-validation/8C8A222D2DF382E5B23918D7BF38F416.txt')
+        with open(path, 'r') as f:
+            data = f.read()
+            return Response(data)

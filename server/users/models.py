@@ -28,7 +28,3 @@ class UserForm(ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email', 'phone_number', 'location', 'is_admin']
-        help_texts = {
-            'location': 'Format should be "City, Country"',
-            'phone_number': 'Format should be "123-456-7890"'
-        }

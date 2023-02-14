@@ -14,7 +14,7 @@ import {
 import { Form, Formik } from "formik";
 import InputField from "../../components/InputField";
 import { toErrorMap } from "../../utils/toErrorMap";
-import { deleteUser, updateUser, getUser } from "../api/user";
+import { deleteUser, updateUser, getUser } from "../../api/user";
 import { validateForm } from "../../utils/validateForm";
 
 const Edit = ({ id }) => {
