@@ -27,7 +27,7 @@ Full-stack Django/React application to manage team members.
 3. Start server with Next.js: `yarn dev`
 4. Go to http://localhost:3000 :chart_with_upwards_trend:
 
-## Navigating the code
+## Navigating the code :mag:
 
 - `/server` is my backend and is implemented using the Django REST framework, which connects to my PostgreSQL database.
   - `/server/users/test.py` is where my unit tests are located.
@@ -38,19 +38,19 @@ Full-stack Django/React application to manage team members.
   - `/web/components` are my reusable custom components.
   - `/web/utils` hold my utility function for validation and error mapping.
 
-## Running Django Tests
+## Running Django Tests :battery:
 
 1. `cd teamify/server`
 2. `python manage.py test`
 
-## Error Handling
+## Error Handling :white_check_mark:
 
 I implemented error handling in all forms. Every form field in the add and delete pages check for valid input, and show error messages under text fields that need to be updated.
 
-## Responsive Design
+## Responsive Design :iphone:
 
 Although there was no referene to responsive design in the project requirements document, I implemented the UI to account for desktop, movile, and even iPad users. This was not too much extra work and would make a big difference had this been a real product.
 
-## How much time I spent
+## How much time I spent :clock1:
 
 Building the app took me about 10 hours in total. I also went a little overboard and containerized my app using docker for fun, and that took me another 2 hours.
