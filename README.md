@@ -47,7 +47,7 @@ Full-stack Django/React application to manage team members.
 
 I implemented error handling in all forms. Every form field in the add and delete pages check for valid input, and show error messages under text fields that need to be updated.
 
-## Google Maps API
+## Google Maps API :earth_americas:
 
 For the location field in the user form, I thought it would be helpful for the user to have autocompletion using teh Google maps API. This was a fairly minor adjustment, but I think it really helps improve UX of the product!
 
