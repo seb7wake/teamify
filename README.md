@@ -13,12 +13,17 @@ Full-stack Django/React application to manage team members.
 
 1. `cd teamify/server` from the root project folder to move to the backend
 2. Set up your virtual environment:
-   1. Installation virtualenv: `pip install virtualenv`
-   2. Initialize virtual environment: `python -m venv <virtual-env-name>`
-   3. Activate virtual environment: `source <virtual-env-name>/bin/activate`
+   1. Set up your psql table:
+      1. `psql -U postgres` to go into the postgresql terminal interface
+      2. `CREATE DATABASE teamifydb;` to create the required database
+      3. `\l` and confirm the list of returned database names includes teamifydb
+   2. Installation virtualenv: `pip install virtualenv`
+   3. Initialize virtual environment: `python -m venv <virtual-env-name>`
+   4. Activate virtual environment: `source <virtual-env-name>/bin/activate`
 3. Install requirements.txt: `pip install -r requirements.txt`
 4. Migrate database: `python manage.py migrate`
 5. Run server: `python manage.py runserver`
+6. Go to http://localhost:8000/api/users to confirm the server is running
 
 ### Frontend Setup :computer:
 
