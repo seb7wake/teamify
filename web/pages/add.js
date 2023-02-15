@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import Wrapper from "../components/Wrapper";
-import { Box, Button, Flex, Divider } from "@chakra-ui/react";
+import { Box, Button, Divider } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import InputField from "../components/InputField";
 import { Radio, RadioGroup, Stack, useToast } from "@chakra-ui/react";
 import { toErrorMap } from "../utils/toErrorMap";
 import { addUser } from "../api/user";
 import { validateForm } from "../utils/validateForm";
-import * as Yup from "yup";
+import LocationInput from "../components/LocationInput";
 
 const Add = () => {
   const router = useRouter();
@@ -94,12 +94,18 @@ const Add = () => {
               <InputField
                 type="tel"
                 name="phone_number"
-                placeholder="123-123-1234"
+                placeholder="1231231234"
                 label="Phone Number"
               />
             </Box>
             <Box mt={4}>
-              <InputField
+              {/* <InputField
+                type="text"
+                name="location"
+                placeholder="Toronto, Canada"
+                label="Location"
+              /> */}
+              <LocationInput
                 type="text"
                 name="location"
                 placeholder="Toronto, Canada"

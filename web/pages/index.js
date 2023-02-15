@@ -8,6 +8,7 @@ import CardContent from "../components/CardContent";
 
 export default function Home() {
   const [users, setUsers] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
   useEffect(() => {
     getUsers().then(
@@ -16,10 +17,18 @@ export default function Home() {
       },
       (error) => {
         console.log(error);
-      }
+      },
+      setLoading(false)
     );
   }, []);
 
+  if (loading) {
+    return (
+      <Wrapper>
+        <Box>Loading...</Box>
+      </Wrapper>
+    );
+  }
   return (
     <>
       <Wrapper>

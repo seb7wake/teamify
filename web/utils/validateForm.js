@@ -5,7 +5,7 @@ export const validateForm = (values) => {
   }
   if (!values.location.includes(",")) {
     errors["location"] = [
-      "Location must be a comma separated list with city and country (ex. Toronto, Canada)",
+      "Location must be a comma separated list (ex. Toronto, Canada)",
     ];
   }
   if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)) {

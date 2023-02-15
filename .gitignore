@@ -1,7 +1,6 @@
 node_modules
 __pychache__/
 .next
-.env
 env/
 db.*
 database/

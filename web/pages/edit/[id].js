@@ -16,6 +16,7 @@ import InputField from "../../components/InputField";
 import { toErrorMap } from "../../utils/toErrorMap";
 import { deleteUser, updateUser, getUser } from "../../api/user";
 import { validateForm } from "../../utils/validateForm";
+import LocationInput from "../../components/LocationInput";
 
 const Edit = ({ id }) => {
   const [user, setUser] = React.useState([]);
@@ -143,10 +144,10 @@ const Edit = ({ id }) => {
               />
             </Box>
             <Box mt={4}>
-              <InputField
+              <LocationInput
                 type="text"
                 name="location"
-                placeholder="Toronto, Canada"
+                placeholder="Toronto, Ontario"
                 label="Location"
               />
             </Box>
