@@ -1,4 +1,4 @@
-# teamify :rocket: :collision:
+# teamify :rocket: :collision: https://www.teamify.site
 
 Full-stack Django/React application to manage team members.
 
@@ -49,6 +49,10 @@ Full-stack Django/React application to manage team members.
 
 1. `cd teamify/server`
 2. `python manage.py test`
+
+## Deployment
+
+I deployed my frontend using Vercel, and my backend using Digitalocean. Vercel is the creator of Next.js, and so it was the most intuitive choice to host my frontend Next.js app. When deploying my backend, I chose a Digitalocean droplet with Dokku. Dokku allows me to containerize my backend configuration with Docker and link it to a postgres database without too much hassle.
 
 ## Error Handling :white_check_mark:
 
