@@ -1,6 +1,6 @@
-# teamify :rocket: :collision: https://www.teamify.site
+# teamify :rocket: :collision:
 
-Full-stack Django/React application to manage team members.
+Full-stack Django/React application to manage team members. https://www.teamify.site
 
 ## Getting Started Locally :ship:
 
